@@ -1,8 +1,10 @@
 defmodule ElixirSpikesTest do
   use ExUnit.Case
-  doctest ElixirSpikes
+  #doctest ElixirSpikes
 
   test "greets the world" do
-    assert ElixirSpikes.hello() == :world
+    { result, message } = ElixirSpikes.hello()
+    assert result == :world
+    IO.puts message
   end
 end

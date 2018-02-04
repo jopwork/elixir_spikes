@@ -9,11 +9,10 @@ defmodule ElixirSpikes do
   ## Examples
 
       iex> ElixirSpikes.hello
-      :world
+      {:world, "Hello world from Elixir!"}
 
   """
   def hello do
-    IO.puts "Hello world from Elixir!"
-    :world
+    {:world, IO.puts "Hello world from Elixir!"}
   end
 end
