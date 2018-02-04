@@ -1,13 +1,8 @@
 defmodule ElixirLangTests do
   use ExUnit.Case
-  doctest ElixirSpikes
+  #doctest ElixirSpikes
 
-  test "greets the world" do
-    assert ElixirSpikes.hello() == :world
-  end
-
-  test "another test case" do
-    IO.puts "Another Test Case"
-    assert 1 = 1
+  test "addition and equality" do
+    assert 3 == 1+2
   end
 end
