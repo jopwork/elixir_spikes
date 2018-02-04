@@ -1,6 +1,6 @@
 # ElixirSpikes
 
-** TODO: Add description**
+This documents the experiments that I am performing as part of learning the Elixir language.
 
 ## Installation
 
