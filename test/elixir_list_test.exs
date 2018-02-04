@@ -12,4 +12,8 @@ defmodule ElixirListTests do
     assert 1 == hd list
     assert [2,3] == tl list
   end
+
+  test "head of empty list" do
+    assert_raise ArgumentError, fn -> hd [] end
+  end
 end
