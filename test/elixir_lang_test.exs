@@ -39,6 +39,7 @@ defmodule ElixirLangTests do
 
   test "closure do not affect outside value" do
     x = 42
+    assert 42 == (fn -> x end).()
     assert 0 == (fn -> x = 0 end).()
     assert x == 42
   end

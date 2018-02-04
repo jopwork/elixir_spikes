@@ -1,9 +1,12 @@
 defmodule ElixirTupleTests do
   use ExUnit.Case
 
-  test "tuple element" do
+  test "get tuple element" do
     assert :ok = elem({:ok, "abc"}, 0)
     assert "abc" = elem({:ok, "abc"}, 1)
+  end
+
+  test "error when trying to get unknown element" do
     assert_raise ArgumentError, fn -> elem({:ok, "abc"}, 2) end
   end
 
