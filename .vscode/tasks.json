@@ -4,6 +4,15 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "compile",
+            "type": "shell",
+            "command": "mix compile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
             "label": "mix test",
             "type": "shell",
             "command": "mix test",
