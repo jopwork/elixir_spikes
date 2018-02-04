@@ -12,8 +12,4 @@ defmodule ElixirListTests do
     assert 1 == hd list
     assert [2,3] == tl list
   end
-
-  test "hookup" do
-    flunk()
-  end
 end
