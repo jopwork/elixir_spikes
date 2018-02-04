@@ -13,6 +13,6 @@ defmodule ElixirSpikes do
 
   """
   def hello do
-    {:world, IO.puts "Hello world from Elixir!"}
+    {:world, "Hello world from Elixir!"}
   end
 end

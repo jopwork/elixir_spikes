@@ -5,6 +5,6 @@ defmodule ElixirSpikesTest do
   test "greets the world" do
     { result, message } = ElixirSpikes.hello()
     assert result == :world
-    IO.puts message
+    assert message == "Hello world from Elixir!"
   end
 end
