@@ -13,4 +13,38 @@ defmodule ElixirPatternTests do
       {_a, _b, _c} = {:hello, "world"}
     end
   end
+
+  test "raise MatchError when matching tuples to lists" do
+    ## can't run this code -- compile error on pattern matching
+    # assert_raise MatchError, fn ->
+    #   {_a, _b, _c} = [:hello, "world", 42]
+    # end
+  end
+
+  test "match head and tail" do
+    [head | tail] = [1, 2, 3, 4, 5]
+    assert head == 1
+    assert tail == [2,3,4,5]
+  end
+
+  test "pinning values" do
+    x = 1
+    y = 2
+    [x, y] = [1,2] 
+    assert x == 1
+    [x, y] = [2, 2]
+    assert x == 2
+
+    assert_raise MatchError, fn ->
+      [^x, y] = [3, 2]
+    end
+  end
+
+  test "underscore to ignore pattern" do
+    [head | _ ] = [1,2,3] # ignore tail
+    assert head == 1
+
+    [_ | tail] = [1,2,3]
+    assert tail == [2,3]
+  end
 end
