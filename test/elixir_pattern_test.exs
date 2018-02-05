@@ -27,16 +27,17 @@ defmodule ElixirPatternTests do
     assert tail == [2,3,4,5]
   end
 
-  test "pinning values" do
-    x = 1
-    y = 2
+  test "match new values" do
     [x, y] = [1,2] 
     assert x == 1
     [x, y] = [2, 2]
     assert x == 2
+  end
 
+  test "pinning values" do
+    x = 1
     assert_raise MatchError, fn ->
-      [^x, y] = [3, 2]
+      ^x = 3 # same as 1 = 3
     end
   end
 

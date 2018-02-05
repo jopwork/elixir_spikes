@@ -16,7 +16,10 @@
             "label": "mix test",
             "type": "shell",
             "command": "mix test",
-            "group": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "presentation": {
                 "echo": true,
                 "reveal": "always",
