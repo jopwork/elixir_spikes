@@ -1,9 +1,9 @@
 defmodule ElixirLangTests do
   use ExUnit.Case
-  #doctest ElixirSpikes
+  # doctest ElixirSpikes
 
   test "addition and equality" do
-    assert 3 == 1+2
+    assert 3 == 1 + 2
   end
 
   test "division operator returns float" do
@@ -12,8 +12,8 @@ defmodule ElixirLangTests do
   end
 
   test "div returns integer" do
-      assert 3 == div(6,2)
-      assert 3 === div(6,2)
+    assert 3 == div(6, 2)
+    assert 3 === div(6, 2)
   end
 
   test "byte_leng and string length" do
@@ -28,7 +28,7 @@ defmodule ElixirLangTests do
 
   test "anonymous functions" do
     add = fn a, b -> a + b end
-    assert 3 == add.(1,2)
+    assert 3 == add.(1, 2)
     assert is_function(add)
     assert is_function(add, 2)
     refute is_function(add, 1)

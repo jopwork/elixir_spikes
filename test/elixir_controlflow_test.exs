@@ -1,12 +1,9 @@
 defmodule ElixirControlFlowTests do
   use ExUnit.Case
 
-  test "case statement" do
-    x = 2
-
-    # case can be matched to  value
+  test "assign case to variable" do
     y =
-      case x do
+      case 2 do
         1 -> :one
         2 -> :two
         3 -> :three
@@ -15,7 +12,7 @@ defmodule ElixirControlFlowTests do
     assert y == :two
   end
 
-  test "case pattern match" do
+  test "use tuple in case" do
     x =
       case {4, 5, 6} do
         {1, 2, 3} -> :unodostres
@@ -36,11 +33,21 @@ defmodule ElixirControlFlowTests do
     assert x == :many
   end
 
-  test "no matching case results in error" do
+  test "CaseClauseError when no matching case" do
     assert_raise CaseClauseError, fn ->
       case 1 do
         2 -> :not_one
       end
     end
+  end
+
+  test "cond control flow" do
+    x =
+      cond do
+        1 + 1 == 3 -> :wrong
+        1 + 2 == 3 -> :right
+      end
+
+    assert x == :right
   end
 end

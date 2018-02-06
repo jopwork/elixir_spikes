@@ -24,11 +24,11 @@ defmodule ElixirPatternTests do
   test "match head and tail" do
     [head | tail] = [1, 2, 3, 4, 5]
     assert head == 1
-    assert tail == [2,3,4,5]
+    assert tail == [2, 3, 4, 5]
   end
 
   test "match new values" do
-    [x, y] = [1,2] 
+    [x, y] = [1, 2]
     assert x == 1
     [x, y] = [2, 2]
     assert x == 2
@@ -36,16 +36,19 @@ defmodule ElixirPatternTests do
 
   test "pinning values" do
     x = 1
+
     assert_raise MatchError, fn ->
-      ^x = 3 # same as 1 = 3
+      # same as 1 = 3
+      ^x = 3
     end
   end
 
   test "underscore to ignore pattern" do
-    [head | _ ] = [1,2,3] # ignore tail
+    # ignore tail
+    [head | _] = [1, 2, 3]
     assert head == 1
 
-    [_ | tail] = [1,2,3]
-    assert tail == [2,3]
+    [_ | tail] = [1, 2, 3]
+    assert tail == [2, 3]
   end
 end

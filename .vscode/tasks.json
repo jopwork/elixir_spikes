@@ -13,9 +13,21 @@
             }
         },
         {
+            "label": "mix test all",
+            "type": "shell",
+            "command": "mix test --trace",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        },
+        {
             "label": "mix test",
             "type": "shell",
-            "command": "mix test",
+            "command": "mix test --trace ${file}",
             "group": {
                 "kind": "test",
                 "isDefault": true
