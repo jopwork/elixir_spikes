@@ -31,9 +31,9 @@ defmodule ProjectEulerTests do
   four million, find the sum of the even-valued terms.
   """
   test "Problem 2: Even Fibonacci numbers: " do
-    fib = fn {a, b} -> {a, {b, a + b}} end
+    fib_stream = Stream.unfold({0, 1}, fn {a, b} -> {a, {b, a + b}} end)
 
-    Stream.unfold({0, 1}, fib)
+    fib_stream
     |> Stream.filter(&Integer.is_even/1)
     |> Enum.take_while(&(&1 < 4_000_000))
     |> Enum.sum()
