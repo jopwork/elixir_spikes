@@ -25,7 +25,7 @@ defmodule ProjectEulerTests do
       prime_stream()
       |> Enum.take(10)
 
-    assert primes == [1, 2, 3, 5, 7, 11, 13, 17, 19, 23]
+    assert primes == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
   end
 
   test "prime factors" do
