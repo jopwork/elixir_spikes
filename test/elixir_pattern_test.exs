@@ -51,4 +51,14 @@ defmodule ElixirPatternTests do
     [_ | tail] = [1, 2, 3]
     assert tail == [2, 3]
   end
+
+  test "swapping values" do
+    [x, y] = [1, 2]
+    assert x == 1
+    assert y == 2
+
+    [x, y] = [y, x]
+    assert x == 2
+    assert y == 1
+  end
 end

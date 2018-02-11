@@ -1,6 +1,7 @@
 defmodule ProjectEulerTests do
   use ExUnit.Case
   require Integer
+  import ProjectEuler
 
   @moduledoc """
   Project Euler Tests
@@ -31,7 +32,7 @@ defmodule ProjectEulerTests do
   four million, find the sum of the even-valued terms.
   """
   test "Problem 2: Even Fibonacci numbers: " do
-    fib_stream = Stream.unfold({0, 1}, fn {a, b} -> {a, {b, a + b}} end)
+    fib_stream = ProjectEuler.fib_stream()
 
     fib_stream
     |> Stream.filter(&Integer.is_even/1)
@@ -46,5 +47,16 @@ defmodule ProjectEulerTests do
   What is the largest prime factor of the number 600851475143 ?
   """
   test "Problem 3: Largest prime factor:" do
+    assert is_prime(1)
+    assert is_prime(2)
+    assert is_prime(3)
+    refute is_prime(4)
+    assert is_prime(5)
+
+    res =
+      prime_stream()
+      |> Enum.take(50)
+
+    IO.inspect(res, label: "Problem 3")
   end
 end
