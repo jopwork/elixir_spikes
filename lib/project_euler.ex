@@ -7,9 +7,9 @@ defmodule ProjectEuler do
   end
 
   @doc """
-  Returns true if n is prime
+  Returns true if n is prime, i.e. 1 is the only factor
   """
-  def is_prime(n), do: factors(n) == [1]
+  def is_prime(num), do: factors(num) == [1]
 
   @doc """
   Stream of prime numbers
@@ -26,14 +26,14 @@ defmodule ProjectEuler do
   @doc """
   Generate sorted list of prime factors
   """
-  def factors(n), do: factors(n, div(n, 2))
-  defp factors(1, _), do: [1]
-  defp factors(_, 1), do: [1]
-  defp factors(n, i) when rem(n, i) == 0, do: [i | factors(n, i - 1)]
-  defp factors(n, i), do: factors(n, i - 1)
+  def factors(num), do: factors(num, div(num, 2))
+  defp factors(1, _candidate), do: [1]
+  defp factors(_num, 1), do: [1]
+  defp factors(num, candidate) when rem(num, candidate) == 0, do: [candidate | factors(num, candidate - 1)]
+  defp factors(num, candidate), do: factors(num, candidate - 1)
 
   @doc """
   List of prime factors to n
   """
-  def prime_factors(n), do: factors(n) |> Enum.filter(&is_prime/1)
+  def prime_factors(num), do: factors(num) |> Enum.filter(&is_prime/1)
 end
