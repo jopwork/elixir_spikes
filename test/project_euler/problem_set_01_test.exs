@@ -66,13 +66,7 @@ defmodule ProblemSet01Tests do
       y <- 999..1,
       do: x * y
     )
-    |> Enum.map(fn n ->
-      if is_palindrome?(Integer.to_string(n)) do
-        n
-      else
-        0
-      end
-    end)
+    |> Enum.filter(&is_palindrome?(Integer.to_string(&1)))
     |> Enum.max()
     |> IO.inspect(label: "Problem 4")
   end
