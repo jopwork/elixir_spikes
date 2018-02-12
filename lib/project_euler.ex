@@ -12,9 +12,7 @@ defmodule ProjectEuler do
   def is_prime(num) when num >= 0 and num < 3, do: num
 
   def is_prime(num) do
-    2..num
-    |> Stream.filter(fn candidate -> rem(num, candidate) == 0 end)
-    |> Enum.count() == 1
+    factors(num) == [1]
   end
 
   @doc """
