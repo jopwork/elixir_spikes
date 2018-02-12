@@ -9,9 +9,9 @@ defmodule ProjectEuler do
   @doc """
   Returns true if n is prime, i.e. 1 is the only factor
   """
-  def is_prime(num) when num >= 0 and num < 3, do: num
+  def is_prime?(num) when num >= 0 and num < 3, do: num
 
-  def is_prime(num) do
+  def is_prime?(num) do
     factors(num) == [1]
   end
 
@@ -23,7 +23,7 @@ defmodule ProjectEuler do
   defp next_prime(num), do: _next_prime(num + 1)
 
   defp _next_prime(candidate) do
-    if is_prime(candidate) do
+    if is_prime?(candidate) do
       candidate
     else
       next_prime(candidate)
@@ -62,5 +62,12 @@ defmodule ProjectEuler do
       true ->
         _prime_factors({dividend, next_prime(divisor), result})
     end
+  end
+
+  @doc """
+  Returns true if the string is a palindrome
+  """
+  def is_palindrome?(str) do
+    String.reverse(str) == str
   end
 end

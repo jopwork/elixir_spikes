@@ -54,4 +54,26 @@ defmodule ProblemSet01Tests do
     IO.inspect(result, label: "Problem 3")
     assert result |> Enum.reduce(1, &*/2) == num
   end
+
+  @doc """
+  A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+  Find the largest palindrome made from the product of two 3-digit numbers.
+  """
+  test "Problem 4: Largest palindrome produce" do
+    for(
+      x <- 999..1,
+      y <- 999..1,
+      do: x * y
+    )
+    |> Enum.map(fn n ->
+      if is_palindrome?(Integer.to_string(n)) do
+        n
+      else
+        0
+      end
+    end)
+    |> Enum.max()
+    |> IO.inspect(label: "Problem 4")
+  end
 end
