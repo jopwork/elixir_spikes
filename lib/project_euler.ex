@@ -22,10 +22,10 @@ defmodule ProjectEuler do
   """
   def prime_stream, do: Stream.iterate(2, &next_prime/1)
 
-  defp next_prime(num), do: next_prime_candidate(num + 1)
+  defp next_prime(num), do: _next_prime(num + 1)
 
-  defp next_prime_candidate(candidate) do
-    if factors(candidate) == [1] do
+  defp _next_prime(candidate) do
+    if is_prime(candidate) do
       candidate
     else
       next_prime(candidate)
@@ -47,7 +47,22 @@ defmodule ProjectEuler do
   defp factors(num, candidate), do: factors(num, candidate - 1)
 
   @doc """
-  List of prime factors to n
+  List the prime factors of num
   """
-  def prime_factors(num), do: factors(num) |> Enum.filter(&is_prime/1)
+  def prime_factors(num) do
+    _prime_factors({num, 2, []})
+  end
+
+  defp _prime_factors({dividend, divisor, result}) do
+    cond do
+      divisor > dividend ->
+        result
+
+      rem(dividend, divisor) == 0 ->
+        _prime_factors({div(dividend, divisor), divisor, [divisor | result]})
+
+      true ->
+        _prime_factors({dividend, next_prime(divisor), result})
+    end
+  end
 end

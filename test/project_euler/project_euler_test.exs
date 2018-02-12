@@ -29,11 +29,11 @@ defmodule ProjectEulerTests do
   end
 
   test "prime factors" do
-    # assert prime_factors(10) = [1,2,5]
-
-    assert factors(1) == [1]
-    assert factors(2) == [1]
-    assert factors(3) == [1]
-    assert factors(4) == [2, 1]
+    assert prime_factors(1) == []
+    assert prime_factors(2) == [2]
+    assert prime_factors(3) == [3]
+    assert prime_factors(4) == [2, 2]
+    assert prime_factors(10) == [5, 2]
+    assert prime_factors(101) == [101]
   end
 end

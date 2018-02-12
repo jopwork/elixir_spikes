@@ -16,4 +16,13 @@ defmodule ElixirListTests do
   test "head of empty list" do
     assert_raise ArgumentError, fn -> hd([]) end
   end
+
+  test "insert onto head" do
+    list = [1, 2, 3]
+    newval = 0
+    newlist = [newval | list]
+    assert newlist == [0, 1, 2, 3]
+
+    assert [list] == [[1, 2, 3]]
+  end
 end

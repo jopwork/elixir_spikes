@@ -61,4 +61,9 @@ defmodule ElixirPatternTests do
     assert x == 2
     assert y == 1
   end
+
+  test "tuple with list" do
+    {first, second, third} = {1,2,[]}
+    {first, second, third} = {1,2,[3,4]}
+  end
 end

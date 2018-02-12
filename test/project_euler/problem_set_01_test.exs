@@ -47,10 +47,11 @@ defmodule ProblemSet01Tests do
   What is the largest prime factor of the number 600851475143 ?
   """
   test "Problem 3: Largest prime factor:" do
-    # 600_851_475_143
     num = 600_851_475_143
 
-    # res = factors(num)
-    # IO.inspect(res, label: "Problem 3")
+    result = prime_factors(num)
+
+    IO.inspect(result, label: "Problem 3")
+    assert result |> Enum.reduce(1, &*/2) == num
   end
 end
