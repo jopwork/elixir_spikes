@@ -146,6 +146,10 @@ defmodule ProblemSet01Tests do
       """
       |> String.replace("\n", "")
 
+    # split each char into a list of strings (codepoints), convert them to integers
+    # create chunks of 13 integers each with 1 integer overlap
+    # compute product of all integers in a list
+    # find max product
     series
     |> String.codepoints()
     |> Stream.map(fn s -> elem(Integer.parse(s), 0) end)
