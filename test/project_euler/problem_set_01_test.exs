@@ -77,31 +77,6 @@ defmodule ProblemSet01Tests do
   What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
   """
   test "Problem 5: smallest multiple" do
-    splitter = fn pf -> Enum.chunk_by(pf, fn x -> x end) end
-
-    frequency_counter = fn
-      [] -> [value: 1, freq: 0]
-      [head | tail] -> [value: head, freq: length(tail) + 1]
-    end
-
-    # product of all prime_factors^maxfreq
-    1..20
-    |> Enum.map(&prime_factors/1)
-    |> IO.inspect(label: "Prime Factors")
-    |> Enum.map(splitter)
-    |> IO.inspect(label: "Chunks")
-    |> Enum.map(&Enum.map(&1, frequency_counter))
-    |> IO.inspect(label: "Frequency Count")
-    |> Enum.flat_map(& &1)
-    |> IO.inspect(label: "Flattened Frequency Count")
-    |> Enum.sort(&(&1[:value] < &2[:value]))
-    |> Enum.chunk_by(& &1[:value])
-    |> IO.inspect(label: "Chunked by Frequency Count")
-    |> Enum.map(&Enum.max(&1, fn x -> x[:freq] end))
-    |> IO.inspect(label: "Sorted Frequency Count")
-    |> Enum.map(fn [value: v, freq: f] -> :math.pow(v, f) end)
-    |> IO.inspect(label: "Powers")
-    |> Enum.reduce(&(&1 * &2))
-    |> IO.inspect(label: "Problem 5")
+    IO.inspect(lcm(1..20), label: "Problem 5")
   end
 end

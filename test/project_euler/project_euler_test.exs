@@ -44,4 +44,8 @@ defmodule ProjectEulerTests do
     assert is_palindrome?("abba")
     refute is_palindrome?("ab")
   end
+
+  test "lcm" do
+    assert lcm(1..10) == 2520
+  end
 end

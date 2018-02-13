@@ -70,4 +70,29 @@ defmodule ProjectEuler do
   def is_palindrome?(str) do
     String.reverse(str) == str
   end
+
+  @doc """
+  Least Common Multiple
+  """
+  def lcm(list) do
+    splitter = fn pf -> Enum.chunk_by(pf, fn x -> x end) end
+
+    frequency_counter = fn
+      [] -> [value: 1, freq: 0]
+      [head | tail] -> [value: head, freq: length(tail) + 1]
+    end
+
+    # complex way of doing things - experiments on Enum module
+    # product of all prime_factors^maxfreq
+    list
+    |> Enum.map(&prime_factors/1)
+    |> Enum.map(splitter)
+    |> Enum.map(&Enum.map(&1, frequency_counter))
+    |> Enum.flat_map(& &1)
+    |> Enum.sort(&(&1[:value] < &2[:value]))
+    |> Enum.chunk_by(& &1[:value])
+    |> Enum.map(&Enum.max(&1, fn x -> x[:freq] end))
+    |> Enum.map(fn [value: v, freq: f] -> :math.pow(v, f) end)
+    |> Enum.reduce(&(&1 * &2))
+  end
 end
