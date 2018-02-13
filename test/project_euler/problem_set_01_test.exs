@@ -145,13 +145,13 @@ defmodule ProblemSet01Tests do
       71636269561882670428252483600823257530420752963450
       """
       |> String.replace("\n", "")
-      |> IO.inspect()
-      
+
     series
-    |> String.to_charlist()
+    |> String.codepoints()
+    |> Stream.map(fn s -> elem(Integer.parse(s), 0) end)
     |> Stream.chunk_every(13, 1)
-    |> Stremm.map()
-    |> Enum.to_list()
+    |> Enum.map(fn list-> {Enum.reduce(list, &(&1 * &2)),  list} end)
+    |> Enum.max(&(elem(&1, 0)))
     |> IO.inspect(label: "Problem 8")
   end
 end
