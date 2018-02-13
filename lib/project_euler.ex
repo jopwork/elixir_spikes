@@ -10,10 +10,10 @@ defmodule ProjectEuler do
   Returns true if n is prime, i.e. 1 is the only factor
   """
   def is_prime?(num) when num >= 0 and num < 3, do: num
-
-  def is_prime?(num) do
-    factors(num) == [1]
-  end
+  def is_prime?(num), do: _is_prime?(num, div(num, 2))
+  defp _is_prime?(_num, 1), do: true
+  defp _is_prime?(num, candidate) when rem(num, candidate) == 0, do: false
+  defp _is_prime?(num, candidate), do: _is_prime?(num, candidate - 1)
 
   @doc """
   Stream of prime numbers

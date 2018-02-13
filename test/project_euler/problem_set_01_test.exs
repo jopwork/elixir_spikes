@@ -96,10 +96,22 @@ defmodule ProblemSet01Tests do
   test "Problem 6: " do
     count = 100
 
-    sum_of_squares = 1..count |> Enum.map(& &1*&1) |> Enum.reduce(&+/2)
-    sum = 1..count |> Enum.reduce(&+/2) 
-    square_of_sum = sum*sum
+    sum_of_squares = 1..count |> Enum.map(&(&1 * &1)) |> Enum.reduce(&+/2)
+    sum = 1..count |> Enum.reduce(&+/2)
+    square_of_sum = sum * sum
 
     IO.inspect(square_of_sum - sum_of_squares, label: "Problem 6")
+  end
+
+  @doc """
+  By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+
+  What is the 10,001st prime number?
+  """
+  test "Problem 7: 10,001st prime number" do
+    prime_stream
+    |> Stream.drop(10_000)
+    |> Enum.take(1)
+    |> IO.inspect(label: "Problem 7")
   end
 end

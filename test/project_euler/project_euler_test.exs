@@ -35,7 +35,7 @@ defmodule ProjectEulerTests do
     assert prime_factors(4) == [2, 2]
     assert prime_factors(10) == [5, 2]
     assert prime_factors(101) == [101]
-    assert prime_factors(13195) == [29, 12, 7, 5]
+    assert prime_factors(13195) == [29, 13, 7, 5]
   end
 
   test "is_palindrome?" do
