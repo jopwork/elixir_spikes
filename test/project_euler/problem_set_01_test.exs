@@ -70,4 +70,36 @@ defmodule ProblemSet01Tests do
     |> Enum.max()
     |> IO.inspect(label: "Problem 4")
   end
+
+  @doc """
+  2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+  What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+  """
+  test "Problem 5: smallest multiple" do
+    splitter = fn pf -> Enum.chunk_by(pf, fn x -> x end) end
+    frequency_counter = fn 
+      [] -> [value: 1, freq: 0]
+      [head | tail] -> [value: head, freq: length(tail) + 1] 
+    end
+
+    1..20
+    |> Enum.map(&prime_factors/1)
+    |> IO.inspect(label: "Prime Factors")
+    |> Enum.map(splitter)
+    |> IO.inspect(label: "Chunks")
+    |> Enum.map(&(Enum.map(&1, frequency_counter)))
+    |> IO.inspect(label: "Frequency Count")
+    |> Enum.flat_map(&(&1))
+    |> IO.inspect(label: "Flattened Frequency Count")
+    |> Enum.sort(fn(x,y) -> x[:value] < y[:value] end)
+    |> Enum.chunk_by(fn x -> x[:value]  end)
+    |> IO.inspect(label: "Chunked by Frequency Count")
+    |> Enum.map(fn list -> Enum.max(list, fn x -> x[:freq] end) end)
+    |> IO.inspect(label: "Sorted Frequency Count")
+    |> Enum.map(fn [value: v, freq: f] -> :math.pow(v, f) end)
+    |> IO.inspect(label: "Powers")
+    |> Enum.reduce(fn(x, acc) -> x*acc end)
+    |> IO.inspect(label: "Problem 5")
+  end
 end
