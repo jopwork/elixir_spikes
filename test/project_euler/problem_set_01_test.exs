@@ -169,13 +169,33 @@ defmodule ProblemSet01Tests do
   There exists exactly one Pythagorean triplet for which a + b + c = 1000.
   Find the product abc. 
   """
-  test "Problem 9: Pythagorean triplet" do
+  test "Problem 9: Special pythagorean triplet" do
     sum = 1000
+
     for a <- 1..sum do
       for b <- 1..sum do
         c = sum - a - b
-        if a < b and b < c and a*a + b*b == c*c , do: IO.puts("Problem 9: #{a} x #{b} x #{c} = #{a*b*c}")
+
+        if a < b and b < c and a * a + b * b == c * c,
+          do: IO.puts("Problem 9: #{a} x #{b} x #{c} = #{a * b * c}")
       end
     end
+  end
+
+  @doc """
+  The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+  Find the sum of all the primes below two million.
+  """
+  @tag :skip
+  test "Problem 10: Summation of primes" do
+    :observer.start()
+
+      spawn(fn ->
+        prime_stream()
+        |> Stream.take_while(&(&1 < 2_000_000))
+        |> Enum.reduce(0, fn x, acc -> x * acc end)
+        |> IO.inspect(label: "Problem 10")
+      end)
   end
 end

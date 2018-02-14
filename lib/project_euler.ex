@@ -20,7 +20,7 @@ defmodule ProjectEuler do
   """
   def prime_stream, do: Stream.iterate(2, &next_prime/1)
 
-  defp next_prime(num), do: _next_prime(num + 1)
+  def next_prime(num), do: _next_prime(num + 1)
 
   defp _next_prime(candidate) do
     if is_prime?(candidate) do
