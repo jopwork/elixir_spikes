@@ -109,7 +109,7 @@ defmodule ProblemSet01Tests do
   What is the 10,001st prime number?
   """
   test "Problem 7: 10,001st prime number" do
-    prime_stream
+    prime_stream()
     |> Stream.drop(10_000)
     |> Enum.take(1)
     |> IO.inspect(label: "Problem 7")
@@ -154,8 +154,28 @@ defmodule ProblemSet01Tests do
     |> String.codepoints()
     |> Stream.map(fn s -> elem(Integer.parse(s), 0) end)
     |> Stream.chunk_every(13, 1)
-    |> Enum.map(fn list-> {Enum.reduce(list, &(&1 * &2)),  list} end)
-    |> Enum.max(&(elem(&1, 0)))
+    |> Enum.map(fn list -> {Enum.reduce(list, &(&1 * &2)), list} end)
+    |> Enum.max(&elem(&1, 0))
     |> IO.inspect(label: "Problem 8")
+  end
+
+  @doc """
+  A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+    a^2 + b^2 = c^2
+
+  For example, 3^2 + 4^2 = 9 + 16 = 25 = 52.
+
+  There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+  Find the product abc. 
+  """
+  test "Problem 9: Pythagorean triplet" do
+    sum = 1000
+    for a <- 1..sum do
+      for b <- 1..sum do
+        c = sum - a - b
+        if a < b and b < c and a*a + b*b == c*c , do: IO.puts("Problem 9: #{a} x #{b} x #{c} = #{a*b*c}")
+      end
+    end
   end
 end
