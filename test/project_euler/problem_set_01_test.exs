@@ -187,7 +187,7 @@ defmodule ProblemSet01Tests do
 
   Find the sum of all the primes below two million.
   """
-  @tag :skip
+  @tag:skip
   test "Problem 10: Summation of primes" do
     :observer.start()
 
