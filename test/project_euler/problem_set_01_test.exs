@@ -187,15 +187,19 @@ defmodule ProblemSet01Tests do
 
   Find the sum of all the primes below two million.
   """
-  @tag:skip
+  @tag :skip
   test "Problem 10: Summation of primes" do
     :observer.start()
 
-      spawn(fn ->
-        prime_stream()
-        |> Stream.take_while(&(&1 < 2_000_000))
-        |> Enum.reduce(0, fn x, acc -> x * acc end)
-        |> IO.inspect(label: "Problem 10")
-      end)
+    spawn(fn ->
+      prime_stream()
+      |> Stream.take_while(&(&1 < 2_000_000))
+      |> Enum.reduce(0, fn x, acc -> x * acc end)
+      |> IO.inspect(label: "Problem 10")
+    end)
+  end
+
+  test "testing" do
+    assert 1 == 2
   end
 end

@@ -63,7 +63,7 @@ defmodule ElixirPatternTests do
   end
 
   test "tuple with list" do
-    {first, second, third} = {1,2,[]}
-    {first, second, third} = {1,2,[3,4]}
+    {first, second, third} = {1, 2, []}
+    {first, second, third} = {1, 2, [3, 4]}
   end
 end

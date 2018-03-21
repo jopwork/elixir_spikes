@@ -3,6 +3,7 @@ defmodule ElixirComprehensionTests do
 
   test "range" do
     sum = 20
+
     for c <- sum..3 do
       for b <- (c - 1)..2 do
         a = sum - c - b
@@ -11,6 +12,7 @@ defmodule ElixirComprehensionTests do
     end
 
     sum = 20
+
     for a <- 1..sum do
       for b <- 1..sum do
         c = sum - a - b
