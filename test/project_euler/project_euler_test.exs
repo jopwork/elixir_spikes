@@ -1,5 +1,5 @@
 defmodule ProjectEulerTests do
-  use ExUnit.Case
+use ExUnit.Case
   import ProjectEuler
 
   @moduledoc """
