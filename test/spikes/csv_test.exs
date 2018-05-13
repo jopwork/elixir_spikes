@@ -18,15 +18,15 @@ defmodule CsvTests do
   test "file exists" do
     {:ok, rows} = read_csv_file("test/spikes/MTXXX.csv")
 
-    IO.inspect rows
+    IO.inspect(rows)
   end
 
   def read_csv_file(filename) do
     try do
       rows =
         File.stream!(filename)
-        |>CSV.decode()
-        |>Enum.to_list()
+        |> CSV.decode()
+        |> Enum.to_list()
 
       {:ok, rows}
     rescue

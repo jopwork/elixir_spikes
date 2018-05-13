@@ -11,7 +11,7 @@ defmodule FileTest do
       File.stream!("non_existent_file")
       |> Enum.take(1)
     rescue
-      e -> IO.inspect e, label: "Error: "
+      e -> IO.inspect(e, label: "Error: ")
     end
   end
 end
