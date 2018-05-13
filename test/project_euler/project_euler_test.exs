@@ -1,5 +1,5 @@
 defmodule ProjectEulerTests do
-use ExUnit.Case
+  use ExUnit.Case
   import ProjectEuler
 
   @moduledoc """
@@ -48,11 +48,4 @@ use ExUnit.Case
   test "lcm" do
     assert lcm(1..10) == 2520
   end
-
-  test "sieve" do
-    :observer.start()
-    Sieve.primes_to(1_000_000) |> IO.inspect(label: "sieve")
-  end
-
-
 end
