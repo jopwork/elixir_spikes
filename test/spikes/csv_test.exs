@@ -12,22 +12,25 @@ defmodule CsvTests do
   end
 
   test "file does not exist" do
-    {:error, "File does not exist"} = read_csv_file("unknownfile.xxx")
+    {:error, :enoent} = read_csv_file("unknownfile.xxx")
+  end
+
+  test "file exists" do
     {:ok, rows} = read_csv_file("test/spikes/MTXXX.csv")
 
     IO.inspect rows
   end
 
   def read_csv_file(filename) do
-    if ! File.exists?(filename) do
-      {:error, "File does not exist"}
-    else
+    try do
       rows =
         File.stream!(filename)
         |>CSV.decode()
         |>Enum.to_list()
 
       {:ok, rows}
+    rescue
+      e -> {:error, e.reason}
     end
   end
 end
