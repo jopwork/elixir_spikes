@@ -24,3 +24,4 @@ elixir_spikes-*.tar
 
 # Ignore elixis_ls files
 /.elixir_ls/
+mix.lock

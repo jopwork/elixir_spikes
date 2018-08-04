@@ -18,9 +18,13 @@ defmodule CsvTests do
   test "file exists" do
     {:ok, rows} = read_csv_file("test/spikes/MTXXX.csv")
 
-    IO.inspect(rows)
+    rows
+    |> Enum.map(fn {:ok, fields} -> fields end)
+    |> Enum.map(&List.last/1)
+    |> IO.inspect()
   end
 
+  "Read a csv file"
   def read_csv_file(filename) do
     try do
       rows =
